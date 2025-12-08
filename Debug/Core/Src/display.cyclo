@@ -1,0 +1,4 @@
+../Core/Src/display.c:8:6:LCD_Config	1
+../Core/Src/display.c:37:6:setFont	6
+../Core/Src/display.c:59:6:text	12
+../Core/Src/display.c:102:6:multitext	9

@@ -1,0 +1,5 @@
+../Core/Src/mfcc.c:15:14:hz_to_mel	1
+../Core/Src/mfcc.c:21:14:mel_to_hz	1
+../Core/Src/mfcc.c:27:17:next_pow2	2
+../Core/Src/mfcc.c:34:5:mfcc_compute	29
+../Core/Src/mfcc.c:151:5:mfcc_compute_logmel	22
