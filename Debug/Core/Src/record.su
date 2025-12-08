@@ -1,0 +1,11 @@
+../Core/Src/record.c:30:11:RECORD_GetSDRAMPtr	4	static
+../Core/Src/record.c:35:10:RECORD_GetSDRAMSizeHalfWords	4	static
+../Core/Src/record.c:40:6:RECORD_ClearSDRAM	4	static
+../Core/Src/record.c:52:17:WavProcess_HeaderInit	16	static
+../Core/Src/record.c:138:17:WavProcess_EncInit	16	static
+../Core/Src/record.c:169:17:WavProcess_HeaderUpdate	16	static
+../Core/Src/record.c:194:20:recordStart	56	static
+../Core/Src/record.c:261:20:recordProcess	96	static
+../Core/Src/record.c:343:20:recordStop	96	static
+../Core/Src/record.c:460:6:BSP_AUDIO_IN_HalfTransfer_CallBack	4	static
+../Core/Src/record.c:468:6:BSP_AUDIO_IN_TransferComplete_CallBack	4	static
