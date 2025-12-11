@@ -187,11 +187,12 @@ Known challenges:
 ![IMG_20251210_122422](https://github.com/user-attachments/assets/f2b390e1-6d50-49f3-a33d-7ee847022705)
 ![IMG_20251209_213312](https://github.com/user-attachments/assets/e667e180-fc3e-4009-9fdf-d8151ef5a0bd)
 
-<video width="640" height="360" controls>
-  <source src="[https://raw.githubusercontent.com/MehediEEE45/Audio_ML/main/docs/demo.mp4](https://github.com/MehediEEE45/Audio_ML/blob/main/output.mp4)" type="video/mp4">
-  Your browser does not support the video tag.
+<video width="640" height="360" controls preload="metadata" poster="thumbnail.jpg" crossorigin="anonymous">
+  <source src="https://raw.githubusercontent.com/MehediEEE45/Audio_ML/main/output.mp4" type="video/mp4">
+  <!-- Optional fallback format -->
+  <source src="https://raw.githubusercontent.com/MehediEEE45/Audio_ML/main/output.webm" type="video/webm">
+  Your browser does not support the video tag. You can <a href="https://raw.githubusercontent.com/MehediEEE45/Audio_ML/main/output.mp4">download the video</a>.
 </video>
----
 
 ## Contributing
 
