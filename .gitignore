@@ -1,0 +1,46 @@
+# Ignore build and debug artifacts
+Debug/
+Debug/**
+Build/
+bin/
+lib/
+
+# Object and binary files
+*.o
+*.obj
+*.elf
+*.axf
+*.bin
+*.hex
+*.map
+*.a
+*.lib
+*.lnk
+
+# Compile intermediate and tool files
+*.d
+*.su
+*.cyclo
+*.dSYM/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.launch
+*.project
+.settings/
+
+# X-CUBE-AI and generated outputs
+X-CUBE-AI/Debug/
+X-CUBE-AI/App/*.su
+X-CUBE-AI/App/*.cyclo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# FatFs/Target and other generated BSP files
+Target/
