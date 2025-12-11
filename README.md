@@ -2,262 +2,96 @@
 
 Real-time speaker identification using MFCC + TensorFlow Lite Micro (TFLM).
 
-**Author:** Mehedi
-**Course / Group:** EEE 322 — Digital Signal Processing I Lab / ODD
-**Date:** 9 December 2025
+Author: Mehedi  
+Course / Group: EEE 322 — Digital Signal Processing I Lab / ODD  
+Date: 9 December 2025
 
 ---
 
-## Project overview
+## Summary
 
-This repository implements a real-time speaker recognition system on the STM32F746G-Discovery board. Audio is captured using the on-board microphone/codec, converted to PCM, preprocessed to MFCC features, and classified on-device by a quantized neural network (TFLite/TFLM) integrated into the firmware.
+This project runs a real-time speaker recognition system on the STM32F746G‑DISCOVERY board. The pipeline captures audio from the on-board microphone, converts it to PCM, extracts MFCC features, and performs on‑device inference with a quantized TensorFlow Lite Micro model. Results are shown on the TFT and output over serial.
 
-## Key features
+---
 
-- Real-time audio capture (WM8994 codec / on-board microphone)
-- PDM → PCM conversion with DMA
-- MFCC extraction (40 coefficients)
-- On-device inference using a quantized TFLite/TFLM model
-- TFT LCD and serial output for predicted speaker
-- Dataset: ~2595 one-second clips from multiple speakers (stored in `dataset/`)
+## Quick start
 
-## Repository layout
+Prerequisites:
+- STM32CubeIDE or ARM GCC toolchain + make
+- git and git-lfs (recommended for dataset/model binaries)
+- ST‑Link or compatible programmer
 
-- `Core/` — MCU application code (headers in `Inc/`, sources in `Src/`).
-- `X-CUBE-AI/` — AI model integration, generated C files and X-CUBE-AI config.
-- `Drivers/`, `Utilities/` — BSP, HAL and helper libraries.
-- `Debug/` — local build outputs and Makefile (excluded via `.gitignore`).
-- `dataset/` — recorded `.wav` clips used during development (large files).
-- `python/` — notebooks, preprocessing scripts and saved models (`python/saved_models`).
+Build and flash:
+1. Open `Audio_Classification.ioc` in STM32CubeMX/STM32CubeIDE and generate project files.  
+2. Build in STM32CubeIDE or run the Makefile under `Debug/`.  
+3. Flash with STM32CubeIDE, st-flash, or OpenOCD.
 
-## Getting started
-
-### Prerequisites
-
-- STM32CubeIDE (recommended) or ARM GCC toolchain + `make`.
-- `git` and `git-lfs` (recommended for dataset/model binaries).
-- ST‑LINK or compatible programmer for flashing.
-
-### Build & flash
-
-1. Open `Audio_Classification.ioc` in STM32CubeMX/STM32CubeIDE and generate project files.
-2. Build the project in STM32CubeIDE, or run the Makefile under `Debug/`.
-3. Flash the binary using STM32CubeIDE, `st-flash`, or OpenOCD.
-
-## Python tools and model workflow
-
-- The `python/` folder contains scripts and notebooks for dataset preparation, MFCC extraction, training and conversion to TFLite.
-- Example saved models are under `python/saved_models/` (e.g., quantized `.tflite`).
-
-## Dataset & large files
-
-This repository contains many large files (audio clips, trained model binaries). These are tracked with Git LFS (`*.wav`, `*.tflite`, `*.bin`) to keep Git history small. If you prefer not to keep large blobs in the repo, remove `dataset/` and publish a separate release archive.
-
-If collaborators have older clones prior to the LFS migration, advise them to reclone or run:
-
+If you encounter LFS-related problems after a migration, reclone or run:
 ```bash
 git fetch origin
 git reset --hard origin/main
 ```
 
-## Usage notes
+---
 
-- Real-time latency and accuracy depend on microphone placement, background noise and model quantization. On-device accuracy observed around ~70% for this dataset; offline training accuracy is typically higher.
-- For experimentation, modify `python/` scripts to retrain or convert models, then update `X-CUBE-AI/` integration.
+## Project highlights
 
-## Contributing
-
-- Open an issue or submit a PR for fixes, model updates, or CI additions.
-- After history rewrite or LFS migration, notify collaborators to reclone.
-
-## License
-
-See `LICENSE_X-CUBE-AI.txt` for licensing details.
-
-## Contact
-
-Open issues in the GitHub repository for questions or follow-ups.
-<<<<<<< HEAD
-# Audio Classification for STM32F746G-Discovery
-
-Overview
---------
-
-This project demonstrates on-device audio classification for the STM32F746NGHx Discovery board. It captures audio, computes MFCC features, runs inference using an X-CUBE-AI model, and provides basic playback and serial/UI integration.
-
-Highlights
-----------
-
-- Real-time audio capture and MFCC extraction (`Core/`).
-- On-device inference via files in `X-CUBE-AI/`.
-- Example playback, UI and serial-control code in `Core/Src` and `Drivers/BSP`.
-
-Repository layout
----------------
-
-- `Core/` — MCU application code (headers in `Inc/`, sources in `Src/`).
-- `X-CUBE-AI/` — AI model, generated C code and X-CUBE-AI config.
-- `Drivers/`, `Utilities/` — board support package, HAL and helper libraries.
-
-Getting started
----------------
-
-Prerequisites
-
-- STM32CubeIDE (recommended) or ARM GCC toolchain + `make`.
-- ST-LINK (or compatible) for flashing.
-
-Build & flash
-
-1. Open `Audio_Classification.ioc` in STM32CubeMX/STM32CubeIDE and generate the project files.
-2. Build the project in STM32CubeIDE, or run the Makefile under `Debug/`.
-3. Flash the binary using STM32CubeIDE, `st-flash`, or OpenOCD.
-
-Working with the Python tools
------------------------------
-
-- Use the `python/` folder for dataset preparation, MFCC extraction and training. Notebooks and helper scripts are provided.
-- Saved models are under `python/saved_models/` (example: quantized `.tflite`).
-
-Dataset & model files
----------------------
-
-The repository contains many audio clips and model binaries. These are tracked with Git LFS to keep the Git history manageable; LFS objects are stored on the remote. If you prefer not to store large files in the repo, remove `dataset/` and create a release package instead.
-
-Contributing
-------------
-
-- Report issues or propose changes via PRs. If you modify history (e.g., LFS migration), tell collaborators to reclone or `git fetch && git reset --hard origin/main`.
-
-License
--------
-
-See `LICENSE_X-CUBE-AI.txt` for licensing terms.
-
-Contact
--------
-
-Repository is pushed to your GitHub remote. Open issues there for follow-ups.
-
-# 🎤 Audio Classification on STM32F746G-DISCO  
-### Real-Time Speaker Identification using MFCC + TensorFlow Lite Micro
-
-**Author:** Mehedi  
-**Group:** ODD  
-**Course:** EEE 322 — Digital Signal Processing I Lab  
-**Department:** Electrical & Electronic Engineering, SUST  
-**Submission Date:** 9 December 2025  
+- Real-time audio capture using WM8994 + on-board MEMS microphone (MP34DT01)  
+- PDM → PCM conversion with DMA  
+- MFCC extraction (40 coefficients) on the MCU  
+- Quantized TFLite (int8) model for TFLM inference  
+- TFT LCD + serial output for predicted speaker  
+- Dataset: ~2,595 one‑second clips across 5 speakers
 
 ---
 
-## 📌 Project Overview
-This project implements a **real-time speaker recognition system** on the **STM32F746G-DISCO** board.  
-Speech is recorded using the on-board MEMS microphone, processed using DSP techniques (MFCC), and classified using a **TensorFlow Lite Micro (TFLM)** neural network deployed on the microcontroller.
+## Hardware
 
-### 🔥 Key Features
-- Real-time **audio capture** using WM8994 codec  
-- **PDM → PCM** conversion + DMA  
-- **MFCC extraction** (40-coefficient version)  
-- Neural network model trained in **Python (Keras)**  
-- **Quantized TFLite** model for embedded inference  
-- Speaker name displayed on the TFT LCD  
-- Dataset: **2595 audio clips (1-second each)** from 5 speakers  
-
-=======
-# 🎤 Audio Classification on STM32F746G-DISCO  
-### Real-Time Speaker Identification using MFCC + TensorFlow Lite Micro
-
-**Author:** Mehedi  
-**Group:** ODD  
-**Course:** EEE 322 — Digital Signal Processing I Lab  
-**Department:** Electrical & Electronic Engineering, SUST  
-**Submission Date:** 9 December 2025  
+- STM32F746G‑DISCOVERY (Cortex‑M7 @ 216 MHz, 1 MB Flash, 320 KB SRAM)  
+- MP34DT01 MEMS microphone (on-board)  
+- WM8994 audio codec  
+- 4.3" TFT LCD  
+- SD card (optional)  
+- ST‑Link for flashing & debugging
 
 ---
 
-## 📌 Project Overview
-This project implements a **real-time speaker recognition system** on the **STM32F746G-DISCO** board.  
-Speech is recorded using the on-board MEMS microphone, processed using DSP techniques (MFCC), and classified using a **TensorFlow Lite Micro (TFLM)** neural network deployed on the microcontroller.
+## Software & dependencies
 
-### 🔥 Key Features
-- Real-time **audio capture** using WM8994 codec  
-- **PDM → PCM** conversion + DMA  
-- **MFCC extraction** (40-coefficient version)  
-- Neural network model trained in **Python (Keras)**  
-- **Quantized TFLite** model for embedded inference  
-- Speaker name displayed on the TFT LCD  
-- Dataset: **2595 audio clips (1-second each)** from 5 speakers  
-
->>>>>>> origin/main
----
-
-## 🛠️ Hardware Used
-- **STM32F746G-DISCO** (Cortex-M7 @ 216 MHz, 1MB Flash, 320 KB SRAM)  
-- **MP34DT01** MEMS microphone  
-- **WM8994** Audio codec (ADC/DAC)  
-- **4.3" TFT LCD**  
-- SD card (optional for storage)  
-- ST-Link for flashing & debugging  
+Recommended versions used during development:
+- STM32CubeIDE v1.19, STM32CubeF7 HAL v1.26.0  
+- Python 3.8+, librosa v0.10.0, NumPy v1.25.0  
+- TensorFlow 2.15.0, TensorFlow Lite Micro (manually integrated)  
+- Jupyter Notebook v6.5+, optional CMSIS‑DSP
 
 ---
 
-## 🧰 Software & Libraries
-| Component | Version |
-|----------|---------|
-| STM32CubeIDE | v1.19 |
-| STM32CubeF7 HAL | v1.26.0 |
-| Python | 3.8+ |
-| Librosa | v0.10.0 |
-| NumPy | v1.25.0 |
-| TensorFlow | 2.15.0 |
-| TensorFlow Lite Micro | Built manually |
-| CMSIS-DSP | Optional |
-| Jupyter Notebook | v6.5+ |
+## Repository layout
 
----
-
-## 📂 Project Structure
 .
-├── README.md
-├── dataset/
-│ ├── fa_him/
-│ ├── imran/
-│ ├── nayeem/
-│ ├── shahed/
-│ └── talukder/
-├── python/
-│ ├── split_audio.py
-│ ├── make_metadata.py
-│ ├── extract_mfcc.py
-│ ├── train_model.py
-│ ├── convert_to_tflite.py
-│ └── ai_test.py
-├── stm32/
-│ ├── Core/
-│ ├── Drivers/
-│ ├── Middlewares/
-│ └── xx_model_data.cc
+├── README.md  
+├── dataset/                # recorded WAV clips (per speaker)  
+├── python/                 # preprocessing, training, conversion scripts  
+│   ├── split_audio.py  
+│   ├── extract_mfcc.py  
+│   ├── train_model.py  
+│   ├── convert_to_tflite.py  
+│   └── ai_test.py  
+├── stm32/                  # STM32 project and integration files  
+│   ├── Core/  
+│   ├── Drivers/  
+│   ├── Middlewares/  
+│   └── xx_model_data.cc    # model C array (generated)  
 └── report.tex
 
-
 ---
 
-## 🎙️ Dataset Collection
-- 10 minutes of speech collected per speaker  
-- Converted to WAV format  
-- Split into **1-second clips** using Python (`pydub`)  
-- Total clips: **2595**  
-- Structured as:
-dataset/
-├── fa_him/
-├── imran/
-├── nayeem/
-├── shahed/
-├── talukder/
+## Dataset & preprocessing
 
+- Recordings were split into 1‑second WAV clips using `pydub`. Total ≈ 2,595 clips across 5 speakers.  
+- Example split script (python/split_audio.py):
 
-### 🔧 Split Audio into 1-Second Clips
-
+```python
 from pydub import AudioSegment
 import math, os
 
@@ -265,121 +99,106 @@ audio = AudioSegment.from_file("fa him.wav")
 chunk_length_ms = 1000
 os.makedirs("fa_him", exist_ok=True)
 
-for i in range(math.ceil(len(audio)/chunk_length_ms)):
+for i in range(math.ceil(len(audio) / chunk_length_ms)):
     start = i * chunk_length_ms
     end = start + chunk_length_ms
     audio[start:end].export(f"fa_him/clip_{i+1:03}.wav", format="wav")
-##🎵 MFCC Feature Extraction
-Extracted 40 MFCC coefficients per clip
+```
 
-Used librosa.feature.mfcc()
+### MFCC extraction
+- Extracted 40 MFCC coefficients per clip using `librosa.feature.mfcc`.  
+- Standard pipeline: pre‑emphasis → framing → Hamming window → FFT → Mel filters → log energy → DCT → MFCC. See `python/extract_mfcc.py`.
 
-MFCC extraction pipeline:
+---
 
-Pre-emphasis
+## Model training & conversion
 
-Framing
+Example architecture (reference):
+- Input: 40 MFCC features  
+- Dense(100) + ReLU + Dropout(0.2)  
+- Dense(200) + ReLU + Dropout(0.2)  
+- Dense(100) + ReLU + Dropout(0.2)  
+- Output: Softmax (5 classes)
 
-Hamming window
-
-FFT
-
-Mel filter banks
-
-Log energy
-
-DCT → MFCC
-##🤖 Model Training (Python)
-Neural Network Architecture
-text
-
-Input: 40 MFCC features
-Layer 1: Dense(100) + ReLU + Dropout(0.20)
-Layer 2: Dense(200) + ReLU + Dropout(0.20)
-Layer 3: Dense(100) + ReLU + Dropout(0.20)
-Output: Softmax (5 classes)
-Training Script (simplified)
-python
-
-model.compile(
-    loss='categorical_crossentropy',
-    optimizer='adam',
-    metrics=['accuracy']
-)
-
+Training snippet:
+```python
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.fit(X_train, y_train, epochs=100, batch_size=32)
 model.save("audio_classification_100.keras")
-Achieved Accuracy
-Type	Accuracy
-Offline training	99.8%
-On-device	~70%
+```
 
-##🧪 Converting Keras Model → TFLite Micro
-Int8 Quantization
-python
-
+Convert to quantized TFLite (int8):
+```python
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
-converter.representative_dataset = rep_dataset_gen
+converter.representative_dataset = representative_dataset_gen
 converter.inference_input_type = tf.int8
 converter.inference_output_type = tf.int8
-
 tflite_model = converter.convert()
 open("audio_class_quant.tflite", "wb").write(tflite_model)
-TFLite Model Size
-Copy code
-audio_class_quant.tflite → 57.3 KB
-Converted to C array:
+```
 
+Typical quantized model size: ~57 KB.
 
-xx_model_data.cc
-## 🧵 FreeRTOS Integration
-Major Tasks
-record.c → audio recording from WM8994
+---
 
-mfcc.c → MFCC extraction on MCU
+## Firmware integration
 
-ai_on() → run inference
+Key firmware components:
+- record.c — read audio from WM8994 via DMA  
+- mfcc.c — compute MFCC on MCU  
+- ai_on() — perform inference using TFLM/X‑CUBE‑AI integration  
+- display.c — update TFT with the predicted speaker  
+- role.c — application state machine
 
-display.c → show predicted speaker on LCD
+Workflow:
+Microphone → WM8994 → PCM → MFCC → NN Model → LCD / Serial
 
-role.c → application state machine
+---
 
-System Workflow
-css
-Copy code
-Microphone → WM8994 → PCM → MFCC → NN Model → LCD Display
-## 📊 Results
-Metric	Value
-Real-time latency	~300 ms
-Embedded accuracy	~70%
-Max distance tested	~1 meter
+## Results & limitations
 
-Challenges
-Background noise
+- Real-time latency: ≈ 300 ms  
+- On-device accuracy: ≈ 70% (depends on noise, placement, quantization)  
+- Offline training accuracy: up to ≈ 99.8% (likely overfit; validate on held-out test set)  
+- Max tested distance: ≈ 1 meter
 
-Inconsistent speech loudness
+Known challenges:
+- Background noise and variable speech volume reduce performance.  
+- RAM constraints when holding MFCC buffers and TFLM interpreter simultaneously.  
+- Quantization can degrade accuracy — use a representative dataset for calibration.
 
-RAM limitations for MFCC buffer + TFLite model
+---
 
-## 📸 Project Output
-(Add images to docs/ and link here)
+## Troubleshooting
 
+- If model fails to load or inference crashes, check available RAM and stack sizes in the linker and FreeRTOS task configuration.  
+- If captured audio is noisy or clipped, verify WM8994 init and DMA buffer sizes.  
+- For quantization issues, ensure representative data covers expected audio variance.
 
+---
+
+## Project assets
+
+Place output images in `docs/` and reference them here, e.g.:
 ![Output 1](docs/output.jpg)
-![Output 2](docs/1.jpg)
-![Output 3](docs/2.jpg)
-![Output 4](docs/3.jpg)
-## 📎 References
-STM32F746G-DISCO Reference Manual
 
-TensorFlow Lite Micro Documentation
+---
 
-CMSIS-DSP
+## Contributing
 
-STM32CubeIDE, STM32CubeMX
+- Open an issue for bugs, feature requests, or questions.  
+- Submit PRs for fixes, model improvements, or CI additions.  
+- After history rewrite or LFS migration, ask collaborators to reclone.
 
-##📬 Contact
-<<<<<<< HEAD
-For contributions, issues, or discussions, feel free to open a GitHub issu
+---
 
+## License
+
+See `LICENSE_X-CUBE-AI.txt` for licensing details applicable to generated AI code and model artifacts.
+
+---
+
+## Contact
+
+For questions or support, open an issue in this repository.
