@@ -257,7 +257,7 @@ dataset/
 
 
 ### 🔧 Split Audio into 1-Second Clips
-```python
+
 from pydub import AudioSegment
 import math, os
 
@@ -269,7 +269,7 @@ for i in range(math.ceil(len(audio)/chunk_length_ms)):
     start = i * chunk_length_ms
     end = start + chunk_length_ms
     audio[start:end].export(f"fa_him/clip_{i+1:03}.wav", format="wav")
-🎵 MFCC Feature Extraction
+##🎵 MFCC Feature Extraction
 Extracted 40 MFCC coefficients per clip
 
 Used librosa.feature.mfcc()
@@ -289,8 +289,7 @@ Mel filter banks
 Log energy
 
 DCT → MFCC
-
-🤖 Model Training (Python)
+##🤖 Model Training (Python)
 Neural Network Architecture
 text
 
@@ -315,7 +314,7 @@ Type	Accuracy
 Offline training	99.8%
 On-device	~70%
 
-🧪 Converting Keras Model → TFLite Micro
+##🧪 Converting Keras Model → TFLite Micro
 Int8 Quantization
 python
 
@@ -334,7 +333,7 @@ Converted to C array:
 
 
 xx_model_data.cc
-🧵 FreeRTOS Integration
+## 🧵 FreeRTOS Integration
 Major Tasks
 record.c → audio recording from WM8994
 
@@ -350,7 +349,7 @@ System Workflow
 css
 Copy code
 Microphone → WM8994 → PCM → MFCC → NN Model → LCD Display
-📊 Results
+## 📊 Results
 Metric	Value
 Real-time latency	~300 ms
 Embedded accuracy	~70%
@@ -363,16 +362,15 @@ Inconsistent speech loudness
 
 RAM limitations for MFCC buffer + TFLite model
 
-📸 Project Output
+## 📸 Project Output
 (Add images to docs/ and link here)
 
-scss
-Copy code
+
 ![Output 1](docs/output.jpg)
 ![Output 2](docs/1.jpg)
 ![Output 3](docs/2.jpg)
 ![Output 4](docs/3.jpg)
-📎 References
+## 📎 References
 STM32F746G-DISCO Reference Manual
 
 TensorFlow Lite Micro Documentation
@@ -381,9 +379,7 @@ CMSIS-DSP
 
 STM32CubeIDE, STM32CubeMX
 
-📬 Contact
+##📬 Contact
 <<<<<<< HEAD
 For contributions, issues, or discussions, feel free to open a GitHub issu
-=======
-For contributions, issues, or discussions, feel free to open a GitHub issu
->>>>>>> origin/main
+
