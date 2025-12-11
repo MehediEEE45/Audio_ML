@@ -179,10 +179,8 @@ Known challenges:
 ---
 
 ## Project assets
-
-
-(docs![2](https://github.com/user-attachments/assets/b446922b-3859-4732-8137-2a64ac9ac3d6)
-/output.jpg)![1](https://github.com/user-attachments/assets/b27e0875-7b4b-425f-a8b6-5ab1a744f9aa)
+![2](https://github.com/user-attachments/assets/b446922b-3859-4732-8137-2a64ac9ac3d6)
+![1](https://github.com/user-attachments/assets/b27e0875-7b4b-425f-a8b6-5ab1a744f9aa)
 ![3](https://github.com/user-attachments/assets/e15122fe-0750-46ab-bdbe-f2a23d7097ee)
 ![2](https://github.com/user-attachments/assets/21743132-decf-4e7f-9edb-187a44cc1a62)
 ![IMG_20251210_122422](https://github.com/user-attachments/assets/f2b390e1-6d50-49f3-a33d-7ee847022705)
