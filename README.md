@@ -239,8 +239,6 @@ Speech is recorded using the on-board MEMS microphone, processed using DSP techn
 │ └── xx_model_data.cc
 └── report.tex
 
-yaml
-Copy code
 
 ---
 
@@ -257,8 +255,6 @@ dataset/
 ├── shahed/
 ├── talukder/
 
-pgsql
-Copy code
 
 ### 🔧 Split Audio into 1-Second Clips
 ```python
@@ -297,7 +293,7 @@ DCT → MFCC
 🤖 Model Training (Python)
 Neural Network Architecture
 text
-Copy code
+
 Input: 40 MFCC features
 Layer 1: Dense(100) + ReLU + Dropout(0.20)
 Layer 2: Dense(200) + ReLU + Dropout(0.20)
@@ -305,7 +301,7 @@ Layer 3: Dense(100) + ReLU + Dropout(0.20)
 Output: Softmax (5 classes)
 Training Script (simplified)
 python
-Copy code
+
 model.compile(
     loss='categorical_crossentropy',
     optimizer='adam',
@@ -322,7 +318,7 @@ On-device	~70%
 🧪 Converting Keras Model → TFLite Micro
 Int8 Quantization
 python
-Copy code
+
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
 converter.representative_dataset = rep_dataset_gen
@@ -336,7 +332,7 @@ Copy code
 audio_class_quant.tflite → 57.3 KB
 Converted to C array:
 
-Copy code
+
 xx_model_data.cc
 🧵 FreeRTOS Integration
 Major Tasks
