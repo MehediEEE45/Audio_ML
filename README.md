@@ -1,3 +1,83 @@
+# Audio Classification on STM32F746G-DISCO
+
+Real-time speaker identification using MFCC + TensorFlow Lite Micro (TFLM).
+
+**Author:** Mehedi
+**Course / Group:** EEE 322 — Digital Signal Processing I Lab / ODD
+**Date:** 9 December 2025
+
+---
+
+## Project overview
+
+This repository implements a real-time speaker recognition system on the STM32F746G-Discovery board. Audio is captured using the on-board microphone/codec, converted to PCM, preprocessed to MFCC features, and classified on-device by a quantized neural network (TFLite/TFLM) integrated into the firmware.
+
+## Key features
+
+- Real-time audio capture (WM8994 codec / on-board microphone)
+- PDM → PCM conversion with DMA
+- MFCC extraction (40 coefficients)
+- On-device inference using a quantized TFLite/TFLM model
+- TFT LCD and serial output for predicted speaker
+- Dataset: ~2595 one-second clips from multiple speakers (stored in `dataset/`)
+
+## Repository layout
+
+- `Core/` — MCU application code (headers in `Inc/`, sources in `Src/`).
+- `X-CUBE-AI/` — AI model integration, generated C files and X-CUBE-AI config.
+- `Drivers/`, `Utilities/` — BSP, HAL and helper libraries.
+- `Debug/` — local build outputs and Makefile (excluded via `.gitignore`).
+- `dataset/` — recorded `.wav` clips used during development (large files).
+- `python/` — notebooks, preprocessing scripts and saved models (`python/saved_models`).
+
+## Getting started
+
+### Prerequisites
+
+- STM32CubeIDE (recommended) or ARM GCC toolchain + `make`.
+- `git` and `git-lfs` (recommended for dataset/model binaries).
+- ST‑LINK or compatible programmer for flashing.
+
+### Build & flash
+
+1. Open `Audio_Classification.ioc` in STM32CubeMX/STM32CubeIDE and generate project files.
+2. Build the project in STM32CubeIDE, or run the Makefile under `Debug/`.
+3. Flash the binary using STM32CubeIDE, `st-flash`, or OpenOCD.
+
+## Python tools and model workflow
+
+- The `python/` folder contains scripts and notebooks for dataset preparation, MFCC extraction, training and conversion to TFLite.
+- Example saved models are under `python/saved_models/` (e.g., quantized `.tflite`).
+
+## Dataset & large files
+
+This repository contains many large files (audio clips, trained model binaries). These are tracked with Git LFS (`*.wav`, `*.tflite`, `*.bin`) to keep Git history small. If you prefer not to keep large blobs in the repo, remove `dataset/` and publish a separate release archive.
+
+If collaborators have older clones prior to the LFS migration, advise them to reclone or run:
+
+```bash
+git fetch origin
+git reset --hard origin/main
+```
+
+## Usage notes
+
+- Real-time latency and accuracy depend on microphone placement, background noise and model quantization. On-device accuracy observed around ~70% for this dataset; offline training accuracy is typically higher.
+- For experimentation, modify `python/` scripts to retrain or convert models, then update `X-CUBE-AI/` integration.
+
+## Contributing
+
+- Open an issue or submit a PR for fixes, model updates, or CI additions.
+- After history rewrite or LFS migration, notify collaborators to reclone.
+
+## License
+
+See `LICENSE_X-CUBE-AI.txt` for licensing details.
+
+## Contact
+
+Open issues in the GitHub repository for questions or follow-ups.
+<<<<<<< HEAD
 # Audio Classification for STM32F746G-Discovery
 
 Overview
@@ -83,6 +163,32 @@ Speech is recorded using the on-board MEMS microphone, processed using DSP techn
 - Speaker name displayed on the TFT LCD  
 - Dataset: **2595 audio clips (1-second each)** from 5 speakers  
 
+=======
+# 🎤 Audio Classification on STM32F746G-DISCO  
+### Real-Time Speaker Identification using MFCC + TensorFlow Lite Micro
+
+**Author:** Mehedi  
+**Group:** ODD  
+**Course:** EEE 322 — Digital Signal Processing I Lab  
+**Department:** Electrical & Electronic Engineering, SUST  
+**Submission Date:** 9 December 2025  
+
+---
+
+## 📌 Project Overview
+This project implements a **real-time speaker recognition system** on the **STM32F746G-DISCO** board.  
+Speech is recorded using the on-board MEMS microphone, processed using DSP techniques (MFCC), and classified using a **TensorFlow Lite Micro (TFLM)** neural network deployed on the microcontroller.
+
+### 🔥 Key Features
+- Real-time **audio capture** using WM8994 codec  
+- **PDM → PCM** conversion + DMA  
+- **MFCC extraction** (40-coefficient version)  
+- Neural network model trained in **Python (Keras)**  
+- **Quantized TFLite** model for embedded inference  
+- Speaker name displayed on the TFT LCD  
+- Dataset: **2595 audio clips (1-second each)** from 5 speakers  
+
+>>>>>>> origin/main
 ---
 
 ## 🛠️ Hardware Used
@@ -280,4 +386,8 @@ CMSIS-DSP
 STM32CubeIDE, STM32CubeMX
 
 📬 Contact
+<<<<<<< HEAD
 For contributions, issues, or discussions, feel free to open a GitHub issu
+=======
+For contributions, issues, or discussions, feel free to open a GitHub issu
+>>>>>>> origin/main
